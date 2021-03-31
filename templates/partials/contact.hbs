@@ -1,0 +1,140 @@
+<div class="containee-fluid mt-5 contact-style" id="contactid">
+    <div class="row">
+        <div class="col-md-10 col-12 mx-auto">
+            <h1 class="text-center main-heading">Contact Us</h1>
+            <p class="text-center sub-heading">we will happy to help you</p>
+
+           <div class="row">
+               <div class="col-md-6 col-12 mx-auto"> 
+
+                   <form action="/contact" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Full Name" name="name">
+                              <small>Error Msg</small>
+                        </div>
+                         <div class="form-group">
+                            <label for="exampleInputEmail">Email address</label>
+                            <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
+                             placeholder="Enter your Email" name="email">
+                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                 else.</small>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Phone</label>
+                            <input type="number" class="form-control" id="phone" placeholder="Phone Number"
+                             name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Message</label>
+                            <input type="text" class="form-control" id="message" placeholder="Message"
+                             name="message">
+                        </div>
+                         <button type="submit" class="btn btn-primary" href="C:\NODEDYNAMIC\templates\partials\login.html">Submit</button>
+                   </form>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+
+
+            const isEmail = (emailVal)=>{
+            var atSymbol = emailVal.indexOf("@");
+            if(atSymbol<1)return false;
+            var dot = emailVal.lastIndexOf('.');
+            if(dot <= atSymbol + 2)return false;
+            if(dot === emailVal.length-1) return false;
+            return true;
+        }
+
+        const validate = () => {
+        const nameVal = name.value.trim();
+        const emailVal = email.value.trim();
+        const phoneVal = phone.value.trim();
+        }
+
+        //validate username
+        if(nameVal === ""){
+            setErrorMsg(name, "Username cannot be blank");
+        }else if(nameVal.length <= 2){
+            setErrorMsgname,"Username min 3 char");
+        }else{
+            setSuccessMsg(name);
+        }
+
+        //validate email
+        if(emailVal === ""){
+            setErrorMsg(email, "Email cannot be blank");
+        }else if(!isEmail(emailVal)){
+            setErrorMsg(email,"Not a valid Email");
+        }else{
+            setSuccessMsg(email);
+        }
+
+        //validate phone
+        if(phoneVal === ""){
+            setErrorMsg(phone, "Phone number cannot be blank");
+        }else if(phoneVal.length != 10){
+            setErrorMsg(phone,"Not a valid Phone Number");
+        }else{
+            setSuccessMsg(phone);
+        }
+
+        function setErrorMsg(input, errormsgs){
+        const formControl = input.parentElement;
+        const small = formControl.querySelector("small");
+        formControl.className = "form-control error";
+        small.innerText = errormsgs;
+    }
+    function setSuccessMsg(input){
+        const formControl = input.parentElement;
+        formControl.className = "form-control success";
+    }
+
+</script>
+{{!--<div class="containee-fluid mt-5 contact-style" id="contactid">
+    <div class="row">
+        <div class="col-md-10 col-12 mx-auto">
+            <h1 class="text-center main-heading">Contact Us</h1>
+            <p class="text-center sub-heading">we will happy to help you</p>
+
+           <div class="row">
+               <div class="col-md-6 col-12 mx-auto"> 
+
+                   <form action="/contact" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Name</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Full Name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Email address</label>
+                            <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                             placeholder="Enter your Email" name="email">
+                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                 else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Phone</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Phone Number"
+                             name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Message</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Message"
+                             name="message">
+                        </div>
+                         <button type="submit" class="btn btn-primary" href="C:\NODEDYNAMIC\templates\partials\login.html">Submit</button>
+                   </form>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>--}}
+
